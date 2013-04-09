@@ -1,0 +1,223 @@
+<%= simple_form_for(@lead) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+		<!-- Personal information -->
+    <hr>
+		<h3>Personal Information</h3>
+		
+		<div class="row-fluid">
+		<div class="span3">
+			<%= f.input :first_name %>			
+		</div> 
+		<div class="span2">
+    	<%= f.input :last_name %>			
+		</div>				 
+		</div>
+		
+		<div class="row-fluid">
+			
+
+		<div class="span3">
+			<%= f.input :email %>
+		</div>
+		<div class="span2">
+			<%= f.input :language %>					
+		</div>
+		</div>		
+    
+		<div class="row">
+			
+			<div class="span3">
+		    <%= f.input :phone %>				
+			</div>
+			<div class="span2">
+				<%= f.input :mobile %>				
+			</div>
+		</div>
+
+		<div class="row-fluid">
+			
+			<div class="span3">
+				<%= f.input :twitter %>				
+			</div>
+			<div class="span2">
+				<%= f.input :skype %>				
+			</div>
+			
+		</div>
+
+		
+  
+		<!-- Location information -->
+		<hr>
+		<h3>Tell us about your location</h3>
+    
+		<div class="row-fluid">
+			<div class="span3">
+				<%= f.input :address %>				
+			</div>
+			<div class="span2">
+				<%= f.input :address2 %>				
+			</div>
+			
+		</div>
+
+ 		<div class="row-fluid">
+		<div class="span5">
+			<%= f.input :address3 %>
+		</div>
+
+    </div>
+   
+   
+    <div class="row-fluid">
+		<div class="span3">
+			<%= f.input :city %>
+		</div>
+		<div class="span2">
+			<%= f.input :state %>
+		</div>
+    	
+    </div>
+
+
+    <div class="row-fluid">
+ 
+ 			<div class="span3">
+				<%= f.input :country %>			
+		</div>
+		<div class="span2">
+			<%= f.input :zipcode %>	  
+			
+		</div>
+    	
+    </div>
+    <hr>
+	  <!-- Physique information -->
+		<h3>About your body and health</hr>
+ 
+    <div class="row-fluid">
+		<div class="span3">
+			<label>Front</label>
+			<%= f.file_field :image %> 		
+		</div>
+		<div class="span2">
+			<label>Back</label>
+			<%= f.file_field :image2 %> 					
+		</div>
+    	
+    </div>
+
+    <div class="row-fluid">
+		<div class="span3">
+			<label>Left Profile</label>
+			<%= f.file_field :image3 %> 		
+		</div>
+		<div class="span2">
+			<label>Right Profile</label>
+			<%= f.file_field :image4 %> 					
+		</div>
+    	
+    </div>
+
+
+    <div class="row-fluid">
+		<div class="span3">
+			<%= f.input :height %>			
+		</div>
+		<div class="span2">
+			<%= f.input :weight %>								
+		</div>
+    	
+    </div>
+
+    <div class="row-fluid">
+		<div class="span3">
+		</div>
+		<div class="span2">
+			
+		</div>
+    	
+    </div>
+
+    <div class="row-fluid">
+		<div class="span5">
+			<label>Do you smoke?</label>
+			<%#= f.input :smoke %>
+			 <%= f.collection_radio_buttons :smoke, [[true, 'Yes'] ,[false, 'No']], :first, :last %>			
+		</div>    	
+    </div>
+
+		<hr>
+		<h3>Procedure you are interested in</h3>
+		<%= f.simple_fields_for :procedures do |builder| %>
+			<fieldset>
+				 <%= builder.collection_check_boxes :procedure_ids, Procedure.all, :id, :name %>
+				<%#= builder.input :name %>
+			</fieldset>	
+		<% end %>
+		
+		<div class="row-fluid">
+			<div class="span5">
+				<%= f.input :prior_procedures, :input_html => {:style => 'width: 100%'} %>			
+			</div>		
+		</div>
+
+		<div class="row-fluid">
+			<div class="span5">
+		  	<%= f.input :current_medication, :input_html => {:style => 'width: 100%'} %> 							
+			</div>			
+		</div>
+
+		<div class="row-fluid">
+			<div class="span5">
+			<%= f.input :diagnosed_diseases, :input_html => {:style => 'width: 100%'} %>							
+			</div>		
+		</div>
+		
+ 		<div class="row-fluid">
+		<div class="span5">
+			<label>Do you require Recuperation Home?</label>
+			<%= f.collection_radio_buttons :require_recuperation_home, [[true, 'Yes'] ,[false, 'No']], :first, :last %>				
+		</div> 			
+ 		</div>
+    <hr>
+		<%= f.input :estimated_date_for_surgery %>	 
+    <hr>
+		<h3>Additional information</h3>
+		
+		
+		<div class="row-fluid">
+			<div class="span5">
+				<label>Do you require transportation</label>
+				<%= f.collection_radio_buttons :require_transportation, [[true, 'Yes'] ,[false, 'No']], :first, :last %>					
+			</div>			
+		</div>
+    
+		<div class="row-fluid">
+			<div class="span5">
+				<%#= f.input :how_did_you_knew_about_us %>
+				<%= f.input :how_did_you_knew_about_us, collection: [ "Facebook", "Google", "Advertising", "A friend", "One of our patients", "Refered"] %>
+												
+			</div>
+			
+		</div>
+		<div class="row-fluid">
+			<div class="span5">
+				<%= f.input :refered_by %>				
+			</div>			
+		</div>
+	   
+			<div class="row-fluid">
+				<div class="span5">
+					<%= f.input :comments, :input_html => {:style => 'width: 100%'} %>
+				</div>
+			</div>
+	
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

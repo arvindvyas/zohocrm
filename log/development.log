@@ -1,0 +1,473 @@
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (119.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (133.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateLeads (20130324205236)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "leads" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "email" varchar(255), "phone" varchar(255), "mobile" varchar(255), "twitter" varchar(255), "skype" varchar(255), "language" varchar(255), "comments" text, "procedure_id" integer, "address" varchar(255), "address2" varchar(255), "address3" varchar(255), "city" varchar(255), "state" varchar(255), "country" varchar(255), "zipcode" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130324205236')[0m
+  [1m[35m (169.9ms)[0m  commit transaction
+Migrating to AddImageToLeads (20130324230350)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "leads" ADD "image" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130324230350')[0m
+  [1m[35m (172.7ms)[0m  commit transaction
+Migrating to AddFieldsToLeads (20130327183712)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "leads" ADD "height" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leads" ADD "weight" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "leads" ADD "refered_by" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leads" ADD "how_did_you_knew_about_us" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "leads" ADD "smoke" boolean
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leads" ADD "prior_procedures" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "leads" ADD "current_medication" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leads" ADD "diagnosed_diseases" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "leads" ADD "require_transportation" boolean
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leads" ADD "require_recuperation_home" boolean[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "leads" ADD "estimated_date_for_surgery" date
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130327183712')[0m
+  [1m[35m (166.1ms)[0m  commit transaction
+Migrating to CreateProcedures (20130327191124)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "procedures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130327191124')[0m
+  [1m[35m (145.0ms)[0m  commit transaction
+Migrating to AddLeadIdToProcedure (20130327192858)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "procedures" ADD "lead_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130327192858')[0m
+  [1m[35m (147.8ms)[0m  commit transaction
+Migrating to AddOtherProcedureToLeads (20130328045535)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "leads" ADD "other_procedure" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328045535')[0m
+  [1m[35m (147.7ms)[0m  commit transaction
+Migrating to AddMoreImages (20130328193432)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "leads" ADD "image2" varchar(255)
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "leads" ADD "image3" varchar(255)[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "leads" ADD "image4" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328193432')[0m
+  [1m[35m (162.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-08 21:23:05 +0530
+Processing by LeadsController#new as HTML
+  Rendered leads/_form.html.erb (826.4ms)
+  Rendered leads/new.html.erb within layouts/application (836.4ms)
+Compiled bootstrap_and_overrides.css  (2519ms)  (pid 17957)
+Compiled lead_steps.css  (130ms)  (pid 17957)
+Compiled leads.css  (2ms)  (pid 17957)
+Compiled procedures.css  (2ms)  (pid 17957)
+Compiled scaffolds.css  (1ms)  (pid 17957)
+Compiled application.css  (2922ms)  (pid 17957)
+Compiled jquery.js  (2ms)  (pid 17957)
+Compiled jquery_ujs.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-alert.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-tab.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap/bootstrap-affix.js  (0ms)  (pid 17957)
+Compiled twitter/bootstrap.js  (692ms)  (pid 17957)
+Compiled jquery-fileupload/vendor/jquery.ui.widget.js  (0ms)  (pid 17957)
+Compiled jquery-fileupload/jquery.iframe-transport.js  (0ms)  (pid 17957)
+Compiled jquery-fileupload/jquery.fileupload.js  (0ms)  (pid 17957)
+Compiled jquery-fileupload/basic.js  (190ms)  (pid 17957)
+Compiled bootstrap.js  (71ms)  (pid 17957)
+Compiled lead_steps.js  (3ms)  (pid 17957)
+Compiled leads.js  (1ms)  (pid 17957)
+Compiled procedures.js  (0ms)  (pid 17957)
+Compiled application.js  (1374ms)  (pid 17957)
+Completed 200 OK in 5937ms (Views: 5714.0ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /jquery.js - 200 OK (16ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/procedures.css?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /procedures.css - 200 OK (1ms)
+
+
+Started GET "/assets/lead_steps.css?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /lead_steps.css - 200 OK (2ms)
+
+
+Started GET "/assets/leads.css?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /leads.css - 200 OK (2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /bootstrap_and_overrides.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /twitter/bootstrap/bootstrap-transition.js - 200 OK (13ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /twitter/bootstrap/bootstrap-modal.js - 200 OK (8ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:11 +0530
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 200 OK (114ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-alert.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-tab.js - 200 OK (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 200 OK (8ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-popover.js - 200 OK (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-button.js - 200 OK (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 200 OK (14ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 200 OK (14ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap/bootstrap-affix.js - 200 OK (10ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /twitter/bootstrap.js - 200 OK (28ms)
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /jquery-fileupload/vendor/jquery.ui.widget.js - 200 OK (5ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /jquery-fileupload/jquery.iframe-transport.js - 200 OK (5ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /jquery-fileupload/jquery.fileupload.js - 200 OK (4ms)
+
+
+Started GET "/assets/jquery-fileupload/basic.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /jquery-fileupload/basic.js - 200 OK (134ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /bootstrap.js - 200 OK (2ms)
+
+
+Started GET "/assets/lead_steps.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /lead_steps.js - 200 OK (1ms)
+
+
+Started GET "/assets/leads.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /leads.js - 200 OK (1ms)
+
+
+Started GET "/assets/procedures.js?body=1" for 127.0.0.1 at 2013-04-08 21:23:12 +0530
+Served asset /procedures.js - 200 OK (2ms)
+
+
+Started POST "/leads" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Processing by LeadsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aBEfDynlGpZuU9oBMilLkHC0v4DdMZBDLZPByVEIzRA=", "lead"=>{"first_name"=>"test", "last_name"=>"stasdt", "email"=>"arvindvyas07@gmail.com", "language"=>"asdf", "phone"=>"3252354234234", "mobile"=>"23423423423423", "twitter"=>"a@b.com", "skype"=>"sfasdfsad", "address"=>"asdf", "address2"=>"sadf", "address3"=>"asdf", "city"=>"asdf", "state"=>"asdfas", "country"=>"Bangladesh", "zipcode"=>"32423423", "height"=>"24", "weight"=>"34", "prior_procedures"=>"asdf", "current_medication"=>"asdf", "diagnosed_diseases"=>"adsf", "require_recuperation_home"=>"true", "estimated_date_for_surgery(1i)"=>"2016", "estimated_date_for_surgery(2i)"=>"3", "estimated_date_for_surgery(3i)"=>"8", "how_did_you_knew_about_us"=>"Facebook", "refered_by"=>"asdf", "comments"=>"asdf"}, "commit"=>"Submit request"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (111.2ms)[0m  INSERT INTO "leads" ("address", "address2", "address3", "city", "comments", "country", "created_at", "current_medication", "diagnosed_diseases", "email", "estimated_date_for_surgery", "first_name", "height", "how_did_you_knew_about_us", "image", "image2", "image3", "image4", "language", "last_name", "mobile", "other_procedure", "phone", "prior_procedures", "procedure_id", "refered_by", "require_recuperation_home", "require_transportation", "skype", "smoke", "state", "twitter", "updated_at", "weight", "zipcode") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["address", "asdf"], ["address2", "sadf"], ["address3", "asdf"], ["city", "asdf"], ["comments", "asdf"], ["country", "Bangladesh"], ["created_at", Mon, 08 Apr 2013 15:56:27 UTC +00:00], ["current_medication", "asdf"], ["diagnosed_diseases", "adsf"], ["email", "arvindvyas07@gmail.com"], ["estimated_date_for_surgery", Tue, 08 Mar 2016], ["first_name", "test"], ["height", "24"], ["how_did_you_knew_about_us", "Facebook"], ["image", nil], ["image2", nil], ["image3", nil], ["image4", nil], ["language", "asdf"], ["last_name", "stasdt"], ["mobile", "23423423423423"], ["other_procedure", nil], ["phone", "3252354234234"], ["prior_procedures", "asdf"], ["procedure_id", nil], ["refered_by", "asdf"], ["require_recuperation_home", true], ["require_transportation", nil], ["skype", "sfasdfsad"], ["smoke", nil], ["state", "asdfas"], ["twitter", "a@b.com"], ["updated_at", Mon, 08 Apr 2013 15:56:27 UTC +00:00], ["weight", "34"], ["zipcode", "32423423"]]
+  [1m[36m (148.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3009/leads/1
+Completed 302 Found in 271ms (ActiveRecord: 259.7ms)
+
+
+Started GET "/leads/1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Processing by LeadsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mLead Load (0.5ms)[0m  SELECT "leads".* FROM "leads" WHERE "leads"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered leads/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 26ms (Views: 21.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/lead_steps.css?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /lead_steps.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/leads.css?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /leads.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/procedures.css?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /procedures.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap/bootstrap-affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery-fileupload/vendor/jquery.ui.widget.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery-fileupload/jquery.iframe-transport.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery-fileupload/jquery.fileupload.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-fileupload/basic.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /jquery-fileupload/basic.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lead_steps.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:27 +0530
+Served asset /lead_steps.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/procedures.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:28 +0530
+Served asset /procedures.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/leads.js?body=1" for 127.0.0.1 at 2013-04-08 21:26:28 +0530
+Served asset /leads.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-09 12:32:52 +0530
+Processing by LeadsController#new as HTML
+  Rendered leads/_form.html.erb (739.2ms)
+  Rendered leads/new.html.erb within layouts/application (797.8ms)
+Completed 200 OK in 1866ms (Views: 1678.9ms | ActiveRecord: 49.4ms)
+
+
+Started GET "/assets/lead_steps.css?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /lead_steps.css - 200 OK (2ms)
+
+
+Started GET "/assets/leads.css?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /leads.css - 200 OK (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-transition.js - 200 OK (53ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-alert.js - 200 OK (8ms)
+
+
+Started GET "/assets/procedures.css?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /procedures.css - 200 OK (2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /bootstrap_and_overrides.css - 200 OK (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 200 OK (16ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-modal.js - 200 OK (12ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-tab.js - 200 OK (13ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 200 OK (14ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 200 OK (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-popover.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-button.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 200 OK (15ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 200 OK (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 200 OK (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap/bootstrap-affix.js - 200 OK (7ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /twitter/bootstrap.js - 200 OK (30ms)
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery-fileupload/vendor/jquery.ui.widget.js - 200 OK (5ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery-fileupload/jquery.iframe-transport.js - 200 OK (6ms)
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery-fileupload/jquery.fileupload.js - 200 OK (75ms)
+
+
+Started GET "/assets/jquery-fileupload/basic.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery-fileupload/basic.js - 200 OK (11ms)
+
+
+Started GET "/assets/lead_steps.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /lead_steps.js - 200 OK (2ms)
+
+
+Started GET "/assets/leads.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /leads.js - 200 OK (1ms)
+
+
+Started GET "/assets/procedures.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /procedures.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2013-04-09 12:32:55 +0530
+Served asset /bootstrap.js - 200 OK (2ms)
